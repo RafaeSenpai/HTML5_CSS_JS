@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+ul#album-fotos{
+    width: 700px;
+    margin: 0 auto;
+    /*O padding abaixo definido é para as fotos, quando o rato passar pr cima delas, poder crescer(ampliar), sem ele asfotos crescem mas icam cortadas*/
+    padding: 50px;
+    overflow: hidden;;
+    list-style: none;
+}
+
+ul#album-fotos li{
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border: 5px solid #ffffff;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+    /*
+    monitoriza todos os efeitos, o tempo que a transição demora e o efeito
+    -webkit-transition: <quais osefeitos a monitorizar> <tempo que as transções demorem> <forma do efeito a ser aplicado>;*/
+    -webkit-transition: all 0.5s ease-in;
+}
+
+
+/*
+OBSERVAÇÃO: O objetivo inicial com esta inserção de imagens dentro das boxs (ul#album-fotos li#foto0X{ ... }) que constituem a galeria
+é de apenas apresentar uma box (200px X 200px) com uma imagem de fundo(em que apenas é apresentada parte da respetiva imagem) de maneira
+a que essa mesma imagem nada mais seja do que uma previsualização da imagem que será apresentada ao passar com o rato por cima, nessa
+altura a imagem que será apresentada será a imagem em ponto maior e ampliada.
+
+IMPORTANTE: Após a tag 'url' nao deve haver espaço, se tal existir a foto desaparece pois a tag estará á espera de mais parametros*/
+ul#album-fotos li#foto01{
+    background:url("../_imagens/galeria-01.jpg") no-repeat;
+    /*
+    50% horizonal
+    50% vertical
+    bacground-position: serve para mudar o posicionamento da imagem, de forma a mostrar o meio da imagem, tal formatação é necessária
+    para que quando partir o zoom da imagem esse zoom vai partir do meio da imagem */
+    background-position:  50% 50%;
+    /*"tamanho da imagem original", isto é, o tamanho da moldura que irá apresentar a imagem em tamanho original*/
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+ul#album-fotos li#foto02{
+    background:url("../_imagens/galeria-02.jpg") no-repeat;
+    background-position:  50% 50%;
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+ul#album-fotos li#foto03{
+    background:url("../_imagens/galeria-03.jpg") no-repeat;
+    background-position:  50% 50%;
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+ul#album-fotos li#foto04{
+    background:url("../_imagens/galeria-04.jpg") no-repeat;.
+    background-position:  50% 50%;
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+ul#album-fotos li#foto05{
+    background:url("../_imagens/galeria-05.jpg") no-repeat;
+    background-position:  50% 50%;
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+ul#album-fotos li#foto06{
+    background:url("../_imagens/galeria-06.jpg") no-repeat;
+    background-position:  50% 50%;
+    background-size: 400px 400px;
+    background-color: #ffffff;
+}
+/*
+para colocar os tituls das imagens invisveis com o objectivo que os mesmos apenas sejam apresentados aquando o rato
+passar por cima da respetiva foto*/
+ul#album-fotos li span{
+    opacity: 0;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000000;
+    background-color: rgba(0,0,0,.3);
+    font-size: 9pt;
+    line-height: 370px;
+    padding: 5px;
+}
+
+/*
+Fazer cm que os titulos das imagens apenas apareça quando o rato passar por cima da respetiva imagem*/
+ul#album-fotos li:hover span{
+    opacity: 1;
+}
+
+
+/*Aplicar o efeito de zoom nas fotos*/
+ul#album-fotos li#foto01:hover{
+    /*
+    quando passar com o rato por cima da moldura da foto, a previsualização existente da foto deixa de estar a apontar
+    para o centro da foto e passa a mostrar a parte de cima da foto*/
+    background-position: 0px 0px;
+    /*
+    faz um zoom out da imagem de forma a mostrar toda a imagem dentro da muldura, porque o background-size aqui
+    definido passa a ter os mesmos valores do background-size definido anteriormente em ul#album-fotos li{ .. }*/
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto01:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto02:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto03:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto04:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto05:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+ul#album-fotos li#foto06:hover{
+    background-position: 0px 0px;
+    background-size: 200px 200px;
+}
+/*Para fazer a imagem aparecer em ponto maior quando o rato passar por cima delas*/
+ul#album-fotos li:hover{
+    -webkit-transform: scale(1.5);
+}

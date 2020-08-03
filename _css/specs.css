@@ -1,0 +1,24 @@
+/*Neste ficheiro irá ficar as configurações dos objetos que existem apenas no ficheiro specs.html*/
+
+/*Para não haver problemas com acentuação*/
+@charset "UTF-8";
+
+
+section#conteudo{
+    width: 95%;
+    /*para ficar centralizado independentemente do tamanho disponivel na tela*/
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/*configurar o tamanho do 'iframe'*/
+iframe#frame-spec{
+    width:50%;
+    height: 280px;
+    /*remover a borda do iframe*/
+    border: none;
+}
+/* No mapa da imagem, tirar cor azul da borda quando a área é clicada*/
+area{
+    outline:none;
+}

@@ -1,0 +1,413 @@
+/*Abaixo definitos UTF-8 para que não sejam gerados caracters estranhos sempre que tem uma palavra com acentuação*/
+
+/* - Também se pode usar fontes disponibilizadas pela google, atravez do link: www.google.com/fonts ,e ficará como na proxima intrução (apenas um import numa linha)
+   - Para relembrar assunto das fontes, ver o video do link: https://www.youtube.com/watch?v=tcrxYeE-67A&list=PLHz_AreHm4dlAnJ_jJtV29RFxnPHDuk9o&index=20
+*/
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+/*abaixo está a maneira para integrar um tipo de letra que se encontra no localhost*/
+@font-face {
+    /*definir um nome á fonte que se quer adicionar*/
+    font-family: "nomeDaFonteDoLogo";
+    /*inserir o local onde se encontra armazenado o ficheiro do tipo de letra*/
+    src: url("../_fonts/bubblegum-sans-regular.otf");
+}
+
+p {
+    text-align: justify;
+    text-indent: 50px;
+}
+
+
+body{
+    /*atribuir a cor cinzenta ao background do site*/
+    background-color: #dddddd;
+    /*
+        - Cor da letra
+                color: black;
+        - Caso se queira trabalhar com uma cor de fundo ou cor da letra com alguma transparecia, usa-se a definição de cor RGBA, conforme na linha a baixo(aplicando á letra):
+                color: rgba(0,0,0,0.7);
+        - Na linha abaixo, aplicar uma imagem de fundo no site
+                background-image: url("caminho para uma imagem");
+        - Na linha abaixo, atribuir uma cor ao fundo da pagina pode ser feito em hexadecimal ou escrevendo a cor entre outras maneiras como as que estao definidas nas linhas abaixo(linhas de codigo comentadas)
+                background-color: white;
+        - Definição da cor de fundo com base na matis e aplicando alguma transparencia
+                background-color: hsla(165,81%,93%,0.5);
+    */
+    color: rgba(0,0,0,1);
+    /*Um texto serifado (Sans Serife) é um estilo de texto em que as extremidade superior e inferiror das letras são rematadas com traços ou prolongamentos do traço de escrita. Ver na net a diferença de letra com serifa e sem serifa*/
+    font-family: Arial, sans-serif;
+}
+
+
+/*Formatação dos links do site*/
+a{
+    /*todos os links existntes no site irão ter uma cor escura*/
+    color: #606060;
+    /*retirar o sublinhado dos links do rodapé*/
+    text-decoration: none;
+}
+
+/*Formatação dos links do site*/
+a:hover{
+    text-decoration: underline;
+}
+
+
+/*Formatação das imagens com legendas*/
+figure.fotografia-legenda{
+    /*Com o 'position', imediatamente a baixo, coloca-se o objeto container que é o 'figure' como posição relativa, isto é, ele vai ficar no lugar relativo ao código html, no local onde ele foi colocado no html, e dentro dele o 'figcaption' vai ter uma posição 'absolute' (como se pode ver na configuração do figcaption no css, mais a baixo) dentro do seu pai que é o 'figure' e vai ficar na posição zero  */
+    position: relative;
+    border: 8px solid white;
+    box-shadow: 1px 1px 4px black;
+}
+
+
+figure.fotografia-legenda img{
+    width: 100%;
+    heigth:100%;
+}
+
+
+figure.fotografia-legenda figcaption{
+    /*cor do texto*/
+    color: white;
+    /*Ele vai ter uma posição absoluta dentro do seu container, isto é, a borda branca*/
+    position: absolute;
+    top: 0px;
+    /*Abaixo atribuindo ás legendas um plano de fundo com alguma transparencia*/
+    background-color: rgba(0,0,0,.4);
+    /*Abaixo, fazer com que o plano de fundo com transparencia, acima definido, ocupe _todo o espaço dentro da imagemagem*/
+    width: 100%;
+    height: 100%;
+    /*Criar um espaço dentro da legenda da imagem, mas o fundo com transparencia ficará deslocado*/
+    padding: 10px;
+    /*Para resolver o problema descrito imediatamente acima, usa-se o 'box-sizing', que vai criar uma box dentro da borda*/
+    box-sizing: border-box;
+    /*Mas o texto está sobre a imagem!! ---> Então vai-se esconder o texto, temporariamente! E definir quando este será mostrado para o utilizador atravez da formatação criada abaixo em 'figure.fotografia-legenda:hover' */
+    opacity: 0;
+    /*Aplicar um efeito de transição
+    PROTOTIPO:
+        transition: 'nome do efeito' 'tempo que vai demorar a aplicar o efeito'*/
+    transition: opacity 1s;
+}
+
+
+/*Fazer com que o texto aparaceça, apenas, quando passar o rato por cima da imagem.
+O 'hover' VAI APLICAR UMA FORMATAÇÃO EXPECIFICA QUANDO PASSAR COM O RATO POR CIMA DO OBJECTO QUE NESTE CASO É O 'figcaption'!*/
+figure.fotografia-legenda:hover figcaption{
+    opacity: 1;
+}
+
+
+/*Formatação do menu*/
+/*NOTA: Sempre que se fizer referencia a um objeto atravez do seu id (neste caso do menu, o id do mesmo é 'menu'. A sua invocação no ficheiro css deve ser feita com recurso ao '#', conforme se verifica a baixo*/
+nav#menu ul{
+    /*retirar o simbolo que antecede cada elemento da lista*/
+    list-style: none;
+    /*colocar todas as letras dos menus em maiúsculas*/
+    text-transform: uppercase;
+    /*Para definir que apenas a lista flutue pela pagina, definindo uma posição absoluta para que a lista possa passar por cima dos documentos
+
+    NOTA/EXPLICAÇÃO: Se usar-mos a posição relativa, so vamos conseguir definir, por exemplo, o top ou left da lista de elementos que compoem o menu, dentro do container do menu nav. Ao usar-mos a posição absoluta, estaremos a ter em conta a posição do menu DENTRO DO SITE INTEIRO. Resumindo, quando utilizamos a posição relativa estamos a limitar as formatações ao conteiner do elemento, já quando for a posição absoluta, estaremos a referir-nos ao container pai do container do elemento( a hierarquia 1 nivel acima)*/
+    position: absolute;
+    top:-20px;
+    left:400px;
+}
+
+
+nav#menu h1{
+    /*uma vez que o titulo <h1> atribuido ao menu não tem utilidade visual nenhuma, mas que é importante dentro do html para os mecanismos de busca, vamos ocultar o menu*/
+    display: none;
+}
+
+
+/*Colocar a lista fo menu na horizontal*/
+nav#menu li {
+    /*faz com que um bloco seja apresentado na mesma linha*/
+    display: inline-block;
+    /*Colocar uma cor de fundo no menu*/
+    background-color: #dddddd;
+    /*criar um espaço DENTRO DA CAIXA  de cada item da lista que representa o menu*/
+    padding: 10px;
+    /*criar um espaço FORA DA CAIXA de cada item da lista que representa o menu, o que vai fazer com que cada celula da lista terá uma certa distancia entre cada celula*/
+    margin: 4px;
+    /*configurar uma transição que inside sobre a cor de fundo (definida mais abaixo em: nav#menu li:hover{...}) de cada item do menu e definir o tempo dessa mesma transição
+    Isto quer dizer que o efeito em cada elemento do menu quando passamos o rato por cima (definida mais abaixo em: nav#menu li:hover{...}) será a alteração da cor de fundo e que essa alteração demorará 1 segundo a acontecer*/
+    transition: background-color 1s;
+    /*IMPORTANTE SABER: Em alguns browsers mais antigos, os mesmos podem nao conseguir interpretar configurações como o 'transition', visto que é uma das novas funcionalidades do CSS3.
+                        De forma a resolver tais incompatibilidades de maneira que até mesmo os browsers mais antigos consigam interpretar as mesmas configurações e desta maneira os mesmos efeitos e transformações visuais do website, apenas temos que copiar a instrução que dita a formatação que queremos aplicar (transition: background-color 1s;), ir ao site: https://autoprefixer.github.io, colar a instrução nesse site e gerar o resultado. O resultado consiste na conversão da instrução do novo css3 (instrução copiada) para uma ou mais instruções necessárias para se obter o mesmo resultado mas em browsers diferentes e mais antigos que possam não ser compativeis com css3. Desta forma garante-se que se consegue os mesmos resultados até mesmo nos browsers mais antigos e até mesmo descontinuados.
+
+                            OBS: Se fizer pesquisa, já existe uma API que faz a conversão toda automáticamente
+
+                        No final, após copiar a instrução, conforme acabado de explicar neste mesmo comentário, a formatação do "nav#meni li{ ... }" ficaria da seguinte forma:
+
+                            nav#menu li{
+                                display: inline-block;
+                                background-color: #dddddd;
+                                padding: 10px;
+                                margin: 4px;
+                                -webkit-transition: background-color 1s;
+                                -o-transition: background-color 1s;
+                                transition: background-color 1s;   <<<---- a instrução de css3 mantém-se para que seja compilada nos browsers mais recentes
+                            }*/
+}
+
+
+/*Fazer com que o menu flutue, transformar o menu num menu flutuante. Para tal tem que se definir o menu como sendo um "bloco", pois um "bloco" pode flutuar pela pagina*/
+nav#menu{
+    /*definindo o menu como um "bloco"*/
+    display: block;
+}
+
+/*Criar um efeito para quando passar o rato por cima de cada elemento da lista/tabela que constitui o menu*/
+nav#menu li:hover{
+    background-color: #606060;
+}
+
+
+/*Formatar no objeto "menu" todos os links para que não fiquem rochos depois de visitado o link e mudar ligeiramente o visual*/
+nav#menu a{
+    /*colocar a cor do texto para preto*/
+    color: black;
+    /* ou color: #000000*/
+    /*retirar o sublinhado do link*/
+    text-decoration: none;
+}
+
+/*Fazer com que o link mude de cor da letra e fique sublinhado quando o rato estiver por cima do item do menu*/
+nav#menu a:hover{
+    color:white;
+    text-decoration: underline;
+}
+
+div#interface{
+    /*delimitar uma largura em pixels*/
+    width: 90%;
+    /*atribuir a cor branca ao background da interface*/
+    background-color: #ffffff;
+    /*Centrar a interface
+    NOTA: Nas versoes anteriores ao html5 a centralização era feita recorrendo ao 'align: center;', mas agora com o html5 já não é assim!
+     A forma correta, no html5, é feita atravez do atributo 'margin', este tem o seguinte prototipo:
+
+        margin: <magem de cima> <margem da direita> <margem de baixo> <margem da esquerda>
+
+        *A ordem dos parametros passados ao margin seguem o sentido dos ponteiros do relogio
+
+        Se quisermos que um dos lados sejam calculados automaticamente pelo browser apenas passamos o parametro 'auto', como se pode ver na instrução abaixo.
+      */
+    margin: -20px auto 10px auto;
+    /*criar uma sombra á volta do objeto, que neste caso é a div.
+    PROTOTIPO:
+        box-shadow: <deslocamento lateral> <deslocamento vertical> <espalhamento da sombra> <cor da sombra>*/
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    /*recorrendo ao 'padding', isto é, o espaçamento interno do objecto e aplicando o mesmo prototipo do 'box-shadow' vai-se criar uma margem a todo_ o texto existente no container 'div#interface'*/
+    padding: 10px 10px 10px 10px; /* <<--- ou padding: 10px*/
+}
+
+/*A diferença entre absoluto e relativo é que no absoluto define-se a posição independentemente do objeto container, já no relativo tudo o que estiver dentro do container segue as configurações dadas a ele*/
+header#cabecalho img#icone{
+    position: absolute;
+    left: 86%;
+    top: 5%;
+}
+
+header#cabecalho{
+    /*Criar uma linha que também se chama de borda para delimitar o cabeçalho
+    PROTOTIPO:
+        border-bottom: <largura> <cor da borda> <formato da borda>;
+
+        *O formato da borda pode ser: - solid
+                                      - dashed (pontilhado)
+                                      - outset
+                                      - inset
+                                      -etc...
+     */
+    border-bottom: 1px #606060 solid;
+    /*definir a altura do cabeçalho (desde o topo da pagina até à linha ou borda*/
+    height: 150px;
+    /*definir como background uma imagem, ao invez de uma cor, tendo em atenção que se a imagem for demasiado pequena, a mesma será automáticamente repetida por todo_ o background daí o 'no-repeat
+
+    PROTOTIPO:
+                background: <url da imagem> <definir se pode ou nao repetir-se> <definir deslocamento horizontal> <deslocamento vertical>*/
+    background: url("../_imagens/glass-logo-peq.jpg") no-repeat 0px 80px;
+}
+
+/*configurar o TITULO do site*/
+header#cabecalho h1{
+    font-family: "nomeDaFonteDoLogo",sans-serif;
+    font-size: 30pt;
+    color: #606060;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.6);
+    padding: 0px;
+    /*configurar o espaço(margem) ABAIXO DO TITULO principal do site, para diminuir o espaço entre o titulo principal e o subtitulo do site*/
+    margin-bottom: 0px;
+}
+
+
+/*configurar SUBTITULO do site*/
+header#cabecalho h2{
+    /*Na linha abaixo, atribuir o tipo de letra que foi importado do site de fontes da google (a importação está logo na parte inicial deste ficheiro css)*/
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15pt;
+    color: #888888;
+    padding: 0px;
+    /*configurar o espaço(margem) ACIMA DO SUBTITULO principal do site, para diminuir o espaço entre o titulo principal e o subtitulo do site*/
+    margin-top: 0px;
+}
+
+
+/*configurar a zona, onde se encontra todo_ o conteudo secundario, 'aside', (lado direito do site)*/
+aside#lateral{
+    display: block;
+    width: 41%;
+    /*APENAS, para todos os objetos que estão configurados como 'display: block;, no html5, tem-se a propriedade 'float' (flutuar).
+    O uso do 'float' vai pertmitir fazer com que a 'aside' flutue pelo lado direito do site */
+    float: right;
+    background-color: #dddddd;
+    /*espaçamento interior do container lateral*/
+    padding:10px;
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
+
+ aside#lateral h1{
+    font-family:  "nomeDaFonteDoLogo", sans-serif;
+     font-size: 20pt;
+     color:#606060;
+     margin-top: 0px;
+ }
+
+aside#lateral h2{
+    background-color: #606060;
+    font-size: 13pt;
+    color: #ffffff;
+    padding: 5px;
+}
+/*configurar a section, onde se encontra todo_ o conteudo principal (lado esquerdo do site)*/
+section#corpo{
+    display: block;
+    width: 52%;
+    /*APENAS, para todos os objetos que estão configurados como 'display: block;, no html5, tem-se a propriedade 'float' (flutuar).
+O uso do 'float' vai pertmitir fazer com que a 'section' flutue pelo lado esquerdo do site */
+    float: left;
+    /*criar uma linha delimitadora do conteudo esquerdo com o conteudo direito.
+    PROTOTIPO:
+        border-right: <espessura da linha> <tipo de linha> <cor da linha>*/
+    border-right: 1px solid #606060;
+    /*criar um espaçamento atravez do 'padding' entre o texto e a linha delimitadora do conteudo esquerdo com o direito */
+    padding-right: 2%;
+}
+
+/*Formatar todos os subtitulos (<h2>) que estão no texto principal*/
+article#noticia-principal h2{
+    font-size: 13pt;
+    color: #606060;
+    background-color: #dddddd;
+    padding: 5px 0px 5px 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+header#cabecalho-artigo h1{
+    font-family: "nomeDaFonteDoLogo", sans-serif;
+    font-size: 20pt;
+    color: #606060;
+    margin-top: 0px;
+    margin-bottom: 0px ;
+
+}
+
+header#cabecalho-artigo h2{
+    font-size: 13pt;
+    color: #cecece;
+    background-color: #ffffff;
+    margin: 0px;
+}
+
+
+header#cabecalho-artigo h3{
+    font-size: 12px;
+    color: #606060;
+}
+
+/*Alinhar á direita a data da atualização da noticia*/
+.direita{
+    text-align: right;
+}
+
+
+/*configurar a zona do rodape do site, onde se encontra o 'footer' (parte inferior do site)*/
+footer#rodape{
+    /*Como temos conteudo a flutuante á esquerda e á direita, o footer terá que eliminar essa divisão que foi feita para os conteudos laterais esquerdo e direito. Isto vai limpar a configuração dos dois lados e mostrar o conteudo do rodapé fora da divisão criada para separar a section do aside*/
+    clear: both;
+    /*criar uma linha delimitadora do conteudo superior do site (section e aside).
+PROTOTIPO:
+    border-top: <espessura da linha> <tipo de linha> <cor da linha>*/
+    border-top: 1px solid #606060;
+    height: 80px;
+    /*Para criar um espaço entre os paragrafos que estão dentro da area do footer(rodape) e a linha delimitadora*/
+    padding-top: 10px;
+}
+
+/*centrar o conteudo do footer*/
+footer#rodape p{
+    text-align: center;
+    height: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*Formatação da tabela*/
+table#tabelaspec {
+    /*espessura das linhas externas que delimitam a parte externa da tabela*/
+    border: 1px solid #606060;
+    /*remover o espaço entre as celulas da tabela*/
+    border-spacing: 0px;
+    /*centrar a tabela*/
+    margin-left: auto;
+    margin-right: auto;
+}
+table#tabelaspec td{
+    /*expessura das linhas internas da tabela*/
+    border: 1px solid #606060;
+    /*criar mis espaço dentro de cada celula, alteramos o espaço interno do objecto atravez do 'padding'*/
+    padding:10px;
+    /*alinhamento do conteudo das celulas da tabela*/
+}
+
+/*Formatação das celulas da coluna da direita na tabela*/
+table#tabelaspec td.cd{
+    color: black;
+    background-color: #cecece;
+}
+
+
+/*Formatação das celulas da coluna da esquerda na tabela*/
+table#tabelaspec td.ce{
+    color: white;
+    background-color: #606060;
+    /*alinhar o conteudo das celulas da coluna esquerda*/
+    vertical-align: top;
+    font-weight: bold;
+}
+
+/*Formatação do titulo da tabela*/
+table#tabelaspec caption{
+    color: #888888;
+    font-size: 13pt;
+    font-weight: bolder;
+}
+
+/*Formatação do titulo da tabela*/
+table#tabelaspec span{
+    /*'display: block', para se desconectar do restante texto (Mar/2013)  do titulo da tabela*/
+    display: block;
+    /*'float: right', para que o texto contido no span flutue para o lado direito do container do caption, caption esse que tem a area a toda largura da tabela*/
+    float: right;
+    color: #000000;
+    font-size: 8px;
+    margin-top: 10px;
+    /*OBSERVAÇÃO: com esta formatação com 'span' consegue-se aparentemente ter dois textos distintos mas que pertencem ao mesmo caption. Desta maneira, apesar de parecerem textos distintos, os mecanismos de busca irão considerar todo_ o caption, e desta forma não perder potencial de destaque na web */
+}

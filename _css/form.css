@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+form {
+    /*definir uma largura de 500px*/
+    width: 500px;
+    /*margem automatica para que fique centralizado*/
+    margin: auto;
+}
+
+/*formatação do input, o que vai formatar de uma só vez muitos campos dos formulários*/
+input, textarea{
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 13pt;
+    /*aplicar uma certa transparencia nos campos de preenchimento, para que os campos de texto nao corte a imagem de fundo da form. Desta forma mantem-se uma armonia do design*/
+    background-color: rgba(255,255,255,.8);
+}
+
+input:hover, textarea:hover {
+    /*definir uma cor de fundo para quando rato passar por cima dos campos a preencher*/
+    background-color: #dddddd;
+}
+
+legend {
+    color: #888888;
+    font-weight: bold;
+    font-size: 13pt;
+    font-family: sans-serif;
+}
+
+fieldset{
+    border-color: #cecece;
+    margin: 20px;
+}
+fieldset#sexo{
+    width: 150px;
+}
+
+fieldset#utilizador{
+    /*As percentagens passadas como parametro é para colocar a imagem de fundo no canto inferior direito*/
+    background: url("../_imagens/icone-contato.png") no-repeat 95% 95%;
+}
+fieldset#endereco{
+    /*As percentagens passadas como parametro é para colocar a imagem de fundo no canto inferior direito*/
+    background: url("../_imagens/icone-endereco.png") no-repeat 95% 95%;
+}
+fieldset#mensagem{
+    /*As percentagens passadas como parametro é para colocar a imagem de fundo no canto inferior direito*/
+    background: url("../_imagens/icone-mensagem.png") no-repeat 95% 95%;
+}
+fieldset#pedido{
+    /*As percentagens passadas como parametro é para colocar a imagem de fundo no canto inferior direito*/
+    background: url("../_imagens/icone-pagamento.png") no-repeat 95% 95%;
+}

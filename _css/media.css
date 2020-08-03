@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/*
+Aplicar uma moldura para os leitores de video e imagem
+
+OBS: A moldura foi feita em photoshop*/
+div#tv-radio{
+    width: 900px;
+    height: 580px;
+    margin: auto;
+    background: url("../_imagens/radio-tv.png") no-repeat ;
+}
+
+/*
+colocar os players de audio e video nas devidas posições das molduras feitas em photoshop
+os valores de left, top e width são usados para precisar a posção dos players dentro da moldura*/
+audio#musica{
+    display: block;
+    position: relative;
+    left: 567px;
+    top: 489px;
+    width: 312px;
+}
+video#filme{
+    display: block;
+    position: relative;
+    left:90px;
+    top:70px;
+    width: 440px;
+}
