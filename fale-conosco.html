@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- EM QUALQUER FICHEIRO HTML, TODOS OS OBJETOS DEVEM POSSUIR 'id'. DESTA FORMA OTIMIZA-SE MUITO TRABALHO NO CSS!!!-->
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Tudo sobre google glass</title>
+        <link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
+        <!--
+        Importar apenas a folha de estilo com as formatações para esta pagina, form.css-->
+        <link rel="stylesheet" type="text/css" href="_css/form.css"/>
+        <script language="JavaScript" src="_javascript/funcoes.js"></script>
+        <script>
+            function calc_total(){
+                var qtd = parseInt(document.getElementById('id_qtd').value);
+                tot = qtd * 1500;
+                /* Apresentar na caixa de texto no final do site o resultado*/
+                document.getElementById('id_total').value = tot;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="interface">
+            <header id="cabecalho">
+                <hgroup>
+                    <h1>Google Glass</h1>
+                    <h2>A revolução do Google está chegando</h2>
+                </hgroup>
+                <img id="icone" src="_imagens/contato.png" />
+                <nav id="menu">
+                    <h1>Menu Principal</h1>
+                    <ul type="disc">
+                        <li onmouseover="alteraImagemTema('home')" onmouseleave="alteraImagemTema('contato')"> <a href="index.html">Home</a></li>
+                        <li onmouseover="alteraImagemTema('especificacoes')" onmouseleave="alteraImagemTema('contato')"><a href="specs.html" >Especificações</a></li>
+                        <li onmouseover="alteraImagemTema('fotos')" onmouseleave="alteraImagemTema('contato')"><a href="fotos.html" >Fotos</a></li>
+                        <li onmouseover="alteraImagemTema('multimidia')" onmouseleave="alteraImagemTema('contato')"><a href="multimidia.html">Multimídia</a></li>
+                        <li onmouseover="alteraImagemTema('contato')" onmouseleave="alteraImagemTema('contato')"><a href="fale-conosco.html" >Fale conosco</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="corpo-full">
+                <article id="noticia-principal">
+                    <header id="cabecalho-artigo">
+                        <hgroup>
+                            <h3>Fale Conosco > Contato</h3>
+                            <h1>Formulário de Contato</h1>
+                            <h2>por Rafael Alves</h2>
+                            <h3 class="direita">Atualizado em 01/Maio/2020</h3>
+                        </hgroup>
+                    </header>
+
+                    <!--
+                    todo_ o formulario que o utilizador tem que preencher tem que estár entre as tags <form></form>
+                    method: pode receber 1 de 2 parametros possiveis, sendo eles o 'get' ou o 'post'
+                        -get: metodo mais rapido mas menos seguro, isto porque vai pegar em todos os dados do formulario e coloca-los no url.
+                              Sempre que se usar este metodo, todos os dados e todos os objetos que estiverem no formulario vao ser visiveis ao utilizador na url (á frente da url da pagina do formulario) assim que o formulario for submetido.
+                        -post: metodo mais demorado mas mais seguro (mas não tão seguro, apenas que é o metodo mais usado neste tipo de formularios, até mesmo para passwords ou cartões de credito é habitual ser usado, pois vai enviar os dados de todo_ o formulario atravez de pacotes dentro do pedido que o utilizador fez ao site
+
+                        OBSERVAÇÃO: O metodo 'post' não suporta criptografia, para tal precisa-se de outros protocolos mais seguros
+
+                        RESUMO:
+                                POST = lento/mais seguro
+                                GET = rápido/menos seguro
+
+                    A tag 'action' é para onde os dados são enviados. Um dos meios mais usados é atravez de email conforme está definido abaixo. Nota que para este metodo de envio por email funcione, o host deve ter o cliente de email (Microsoft: Outlook, MAC: Mail) instalado e configurado, de outra forma nao funcionará
+
+                    OBSERVAÇÃO: Uma das formas para se trabalhar com formularios e os dados inseridos serem tratados de forma correta é usando PHP do lado do host (servidor)
+
+                    NOTA: Apenas com html não é possivel fazer nenhum tratamento de dados (armazenar os dados numa base de daos por exemplo). Para o fazer é necessário recorrer a outras linguagens como o PHP.
+
+                    O parametro 'oninput' é para que quando digitar qualquer coisa irá ser disparado um procedimento, neste caso será o procedimento de calculo total (numero de oculos vezes preço unitário) atravez da função 'calc_total()'. A função 'calc_total()' pode ser criado neste ficheiro html ou num ficheiro diferente. Neste caso a função vai ser definida neste ficheiro html e a definição da função está na zona inicial deste documento entre as tags '<script></script>', na zona do header.
+                    -->
+                    <form method="post" id="fContacto" action="mailto:contacto@teste.com" oninput="calc_total();">
+                        <!--
+                        fieldset: conjunto de campos. Criar um fieldset para cada conjunto distinto do tipo de informação pedida ao utilizador -->
+                        <fieldset id="utilizador">
+                            <!--
+                            Identificação visual do respetivo formulario-->
+                            <legend>Identificação do Usuário</legend>
+                            <!--
+                            'input': cria uma caixa de inserção de dados do tipo texto
+                            size: define o maximo de caracteres VISIVEIS dentro da caixa de texto, quando a quantidade de caracteres superar o valor maximo, aparecerá uma barra de scroll
+                            maxlength: define o maximo de caracteres que a caixa de texto vai aceitar
+                            placeholder: define uma dica em forma para o utilizador a informar algo sobre o campo de preenchimento -->
+                            <p>
+                                <label for="id_nome">Nome:</label>
+                                <input type="text" name="txt_nome" id="id_nome" size="20" maxlength="30" placeholder="Nome Completo"/>
+                            </p>
+                            <p>
+                                <label for="id_pass">Senha:</label>
+                                <input type="password" name="txt_pass" id="id_pass" placeholder="Digite aqui a sua password" size="20" maxlength="30"/>
+                            </p>
+                            <!--
+                            O facto de o tipo do input ser email, permite ao html5 identificar APENAS a conformidade do padrao de um email, NÃO SUBSTITUI NA TOTALIDADE UMA CORRETA VERIFICAÇÃO DO EMAIL DIGITADO!-->
+                            <p>
+                                <label for="id_email">E-mail:</label>
+                                <input type="email" name="txt_email" id="id_email" size="30" maxlength="30" placeholder="Digite o seu email"/>
+                            </p>
+                            <fieldset id="sexo">
+                                <legend>Sexo</legend>
+                                <!--
+                                IMPORTANTE: Dentro do mesmo grupo de objectos do tipo 'radio' todos os elementos 'radio' devem ter o mesmo nome!
+
+                                DICA: Ao carregar o formulario caso seja necessário que um dos elementos 'radio' já esteja selecionado (como uma seleção pre-definida) dentro da tag 'input' defe ser definida a opção 'checked'.
+
+                                PROBLEMA: Nos elementos 'radio' quando queremos selecionar algum deles temos que selecionar exatamente a "bolinha" do botão e isso nao é pratico, muito menos em dispositivos moveis.
+                                          O ideal é que ao clicar na descrição do respetivo elemento radio (neste caso são as palavras "Masculino" e "Feminino") fique selecionado o respetivo elemento 'radio'.
+                                SOLUÇÃO/IMPORTANTE: Vamos usar o id que acabamos de configurar juntamente com o 'label'. Os 'label's ou etiquetas são usados para referenciar os objectos aos seus 'id's, atravez da tag 'for'. O 'label também tem um significado semantico, isto é, ele serve para identificar o objecto relativo a ele. O 'label' deve ser sempre aplicado nos formulários para tornar os mesmos mais acessiveis até mesmo para deficientes visuais, visto que permite aplicar automáticamente optimizações de acessibilidade aos campos com label atribuida e também ajuda na indexaçao do site nos motores de busca!
+                                -->
+                                <input type="radio" name="tSexo" id="cMasc" checked/>
+                                <label for="cMasc">Masculino</label>
+                                <br>
+                                <input type="radio" name="tSexo" id="cFem"/>
+                                <label for="cFem">Feminino</label>
+                            </fieldset>
+                            <p>
+                                <label for="id_dataNasc">Data de Nascimento:</label>
+                                <!--
+                                Com o 'type="date" o campo onde é inserida a data já está todo_ formatado para receber datas, inclusive é apresentado ao utilizador um calendário para que este escolha a data. No caso de browseres muito antigos, esta funcionalidade pode não estar disponivel o que faz com que o campo fique como uma simples caixa de texto, e para culmatar essas incompatibilidades de forma a que quer num browser mais recente como num browser mais antigo a formatação da data seja respeitada, de forma a nao haver erros depois ao gravar a data numa base de dados, recorresse á tag 'placeholder' apresentando o formato de data pretendido-->
+                                <input type="date" name="txt_dataNasc" id="id_dataNasc" placeholder="dd/mm/aaaa"/>
+                            </p>
+                        </fieldset>
+
+                        <fieldset id="endereco">
+                            <legend>Endereço do Usuário</legend>
+                            <p>
+                                <label for="id_morada">Morada:</label>
+                                <input type="text" name="txt_morada" id="id_morada" size="30" maxlength="30" placeholder="Digite a sua morada"/>
+                            </p>
+                            <p>
+                                <label for="id_nporta">Número de porta:</label>
+                                <input type="number" name="txt_nporta" id="id_nporta" size="5" maxlength="5" min="0" max="99999" placeholder="Porta"/>
+                            </p>
+                            <p>
+                                <label for="id_concelho">Concelho:</label>
+                                <!--
+                                A tag 'select' vai criar caixas combinadas -->
+                                <select name="slt_concelho" id="id_concelho">
+                                    <!--
+                                    Dentro da listagem abaixo construida, pode-se agrupar algumas cidades de forma distinta para que o utilizador ao aceder á listagem, veja a identificação de grupos das cidades (Zona litoral, Zona interior). Para aplicar tal identificação usa-se a tag 'optgroup'. Este recurso torna muito mais aplativo e ajuda o utilizador na escolha da opção-->
+                                    <optgroup label="Zona Litoral">
+                                        <!--
+                                    Atravez da tag 'value', pode-se determinar valores que serão enviados caso o utilizador escolha essa opção. Se tal funcionalidade nao for definida o que será enviado para a base de dados será o valor que está entre a tag 'option',no caso a baixo, se nao tivesse a tag 'value' o valor enviado para a base de dados seria Barcelos,-->
+                                        <option value="AGCD">Aguçadoura</option>
+                                        <!--
+                                    Para definir um valor pre-selecionado recorre-se á opção 'selected' dentro da tag 'option' -->
+                                        <option value="APL" selected>Apulia</option>
+                                        <option value="PDV">Povoa de Varzim</option>
+                                        <option value="ESP">Esposende</option>
+                                    </optgroup>
+                                    <optgroup label="Zona Interior">
+                                        <option value="BRC">Barcelos</option>
+                                        <option value="CLR">Celeirós</option>
+                                        <option value="SVTR">S. Vitor</option>
+                                        <option value="GLT">Gualtar</option>
+                                    </optgroup>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="id_distrito">Distrito:</label>
+                                <!--
+                                Dentro da tag input temos a opção 'list' que vai fazer a ligação da datalist mais abaixo definida. Tal ligação vai possibilitar o auto-complete , caso o lugar que o utilizador esteja escrevendo corresponda a alguma das listadas dentro da tag 'datalist' irá aparecer ao utilizador uma lista com possiveis alternativas que lhe completem a inserção do lugar que pretende-->
+                                <input type="text" name="txt_distrito" id="id_distrito" size="30" maxlength="30" placeholder="Nome do distrito" list="lugares"/>
+                                <!--
+                                Tudo o que estiver entre as tags 'datalist' serão as opções -->
+                                <datalist id="lugares">
+                                    <!--
+                                    Abaixo uma listagem de lugares ficticios de algumas das cidades acima definidas -->
+                                    <option value="Lugar dos Pescadores"></option>
+                                    <option value="Praça do redemoinho"></option>
+                                    <option value="Rua dos cucos"></option>
+                                    <option value="Santa fe das curvas"></option>
+                                    <option value="Remelhe"></option>
+                                    <option value="Lugadouro do Barça"></option>
+                                </datalist>
+                            </p>
+                        </fieldset>
+
+                        <fieldset id="mensagem">
+                            <legend>Mensagem do Usuário</legend>
+                                <p>
+                                    <label for="id_grau_urg"> Grau de Urgência:</label>
+                                    Min<input type="range" name="rg_grauU" id="id_grau_urg" min="0" max="10" step="1">Max
+                                </p>
+                                <p>
+                                    <label for="id_msg">Mensagem:</label>
+                                    <textarea name="txtAr_msg" id="id_msg" cols="35" rows="5"></textarea>
+                                </p>
+                        </fieldset>
+
+                        <fieldset id="pedido">
+                            <legend>Quero um Google Glass</legend>
+                            <p><input type="checkbox" name="chk_pedir" id="id_pedir">
+                                <!--
+                                Caso queira que a checkbox já venha previamente selecionada, basta  colocar dentro da tab 'input' colocar a opção checked-->
+                                <label for="id_pedir">Gostaria de adquirir um Google Glass quando disponível</label>
+                            </p>
+                            <p>
+                                <label for="id_cor">Cor:</label>
+                                <input type="color" name="tela_cor" id="id_cor" value="#606060">
+                            </p>
+                            <p>
+                                <label for="id_qtd">Quantidade:</label>
+                                <!--
+                                - O valor 'value' é o valor predefinido no campo
+                                - Os valores min e max definem o valor minimo e o valor maximo permitido no elemento-->
+                                <input type="number" name="txt_qtd" id="id_qtd" min="1" max="5" value="0"/>
+                            </p>
+                            <p>
+                                <label for="id_total">Preço Total: Euro€</label>
+                                <!--
+                                Para que o utilizador apenas visualize o conteudo de uma textbox tem que se definir (definir apenas para leitura), dentro da tag 'input' a funcionalidade 'readonly' -->
+                                <input type="text" name="txt_total" id="id_total" placeholder="Total a pagar" readonly/>
+                            </p>
+                        </fieldset>
+                        <!--
+                        Criar um botão
+                        1º Metodo de criação de um botão
+                            Recorrendo ao uso do botão padrao do html-->
+                        <input type="submit" value="Enviar"/>
+                        <!--
+                        Criar um botão
+                        2º Metodo de criação de um botão
+                            Recorrendo a uma imagem de um botão. A imagem foi feita com recurso a um editor de imagem-->
+                        <input type="image" name="btn_enviar" src="_imagens/botao-enviar.png"/>
+                    </form>
+                </article>
+            </section>
+        </div>
+    </body>
+
+    <footer id="rodape">
+        <p>Copyright &copy; 2020 - by Rafael Alves<p><br>
+        <p><a href="https://facebook.com" target="_blank">Facebook</a> | <a href=https://twitter.com/login?lang=pt" target="_blank">Twitter</a></p>
+    </footer>
+</html>

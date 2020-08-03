@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Tudo sobre google glass</title>
+        <link rel="stylesheet"  href="_css/estilo.css"/>
+        <!-- Importar apenas a folha de estilo com as formatações para esta pagina, specs.css-->
+        <link rel="stylesheet" href="_css/specs.css"/>
+        <script language="JavaScript" src="_javascript/funcoes.js"></script>
+    </head>
+
+    <body>
+        <div id="interface">
+            <header id="cabecalho">
+                <hgroup>
+                    <h1>Google Glass</h1>
+                    <h2>A revolução do Google está chegando</h2>
+                </hgroup>
+                <img id="icone" src="_imagens/especificacoes.png"/>
+                <nav id="menu">
+                    <h1>Menu Principal</h1>
+                    <ul  type="disc">
+                        <li onmouseover="alteraImagemTema('home')" onmouseout="alteraImagemTema('especificacoes')"> <a href="index.html"> Home </a></li>
+                        <li onmouseover="alteraImagemTema('especificacoes')" onmouseleave="alteraImagemTema('especificacoes')"><a href="specs.html"> Especificações </a></li>
+                        <li onmouseover="alteraImagemTema('fotos')" onmouseleave="alteraImagemTema('especificacoes')"><a href="fotos.html"> Fotos </a></li>
+                        <li onmouseover="alteraImagemTema('multimidia')" onmouseleave="alteraImagemTema('especificacoes')"><a href="multimidia.html"> Multimídia </a></li>
+                        <li onmouseover="alteraImagemTema('contato')" onmouseout="alteraImagemTema('especificacoes')"><a href="fale-conosco.html">Fale conosco </a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- cria-se uma nova section com um dentifcador cujas sua confgurações no css irão fazer com que esta secçao ocupe toda a largura da pagina-->
+            <section id="corpo-full">
+                <article id="noticia-principal">
+                    <header id="cabecalho-artigo">
+                        <hgroup>
+                            <h3>Glass > Especificações</h3>
+                            <h1>Raio-X no Google Glass</h1>
+                            <h2>por Rafael Alves</h2>
+                            <h3 class="direita">Atualizado em 01/Maio/2020</h3>
+                        </hgroup>
+                    </header>
+                    <p>Clique em qualquer área destacada da imagem para ter mais informações sobre os recursos do Google Glass.
+                    Qualquer ponto vermelho vai te levar a um lugar cheio de novas informações.</p>
+
+                    <section id="conteudo">
+                        <!--
+                        A imagem abaixo carregada, será a imagem dos oculos que ficaram no lado esquerdo da pagina e a tag 'usemap' é para criar uma relação entre o mapa e a imagem-->
+                        <img src="_imagens/glass-esquema-marcado.jpg" usemap="#meumapa"/>
+                        <!--
+                        abaixo, o conteudo relativo ao mapa da imagem (glass-esquema-marcado.jpg). É aconcelhava que tais mapas fiquem imediatamentem a seguir ao carregamento da imagem-->
+                        <map name="meumapa">
+                              <!--
+                              Um mapa é composto por areas, entao cria-se uma area. Toda a area tem o seu 'shape'(forma) definido para si. O 'shape' pode ter 3 tipos: retangulos, circulos e o poligonal
+                              - Na definição de um retangulo as coordenadas a serem inseridas devem ser o canto superior esquerdo e a seguid o canto inferior direito;
+                              - Na circunferencia os pontos são as coordenadas do centro da circunferencia e o tamanho do raio (em pixeis).
+                              - Na definição de um poligono é necessário definir todos os pontos que delimitam o poligono em questão, sem limite para o numero de pontos que se pode definir (cada ponto defini-se com 1 coordenada que é representada por 2 valores, o valor do eixo do x e o valor do eixo de y)
+                              Para trabalhar com esta funcionalidade é necessário o uso de um editor de imagem, pode ser o paint, e atravez do mesmo software retirar as coordenadas(em pixels) que definem cada zona a vermelho da imagem  glass-esquema-marcado.jpg". A seguir define-se a pagina a abrir, neste caso 'google-glass.html', seguido de # que é para inidcar o 'artigo' existente na pagina em que deve ficar posicionado. Por fim a tag 'target' é para definir onde a pagina deve ser apresentada, que neste caso é no interior do 'iframe' de nome 'janela'
+                               -->
+                                <area shape="rect" coords="181,220,266,253" href="google-glass.html#tela" target="janela"/>
+                                <area shape="circle" coords="157,244,10" href="google-glass.html#camera" target="janela"/>
+                                <area shape="circle" coords="75,52,10" href="google-glass.html#gadgets" target="janela"/>
+                                <area shape="poly" coords="27,146,83,216,83,250,26,166" href="google-glass.html#sensores" target="janela"/>
+                        </map>
+                        <!--
+                        abaixo vai-se criar um espaço na mesma pagina (só que do lado direito) que irá mostrar no seu interior a pagina passada no parametro src, a este elemento, dá-se o nome de 'iframe' e todo_o 'iframe tem que ter um 'nome' atribuido para se poder criar links personalizados. Já a necessidade de ter um id, é para que este elemento possa ser configurado no ficheiro 'style.css'.
+                        NOTA IMPORTANTE: Como esta pagina, 'specs.html' tem configurações unicas e que não são aplicadas a mais nenhumas paginas do site, não faz sentido as suas formatações css ficarem no ficheiro style.css, isto porque vai obrigar o servidor de alojamento a carregar um ficheiro css enorme, isto porque esse ficheiro não teria so as configurações desta pagina mas também as configurações de todo_ o restante site o que não seria necessário, além que iria gastar poder de processamento do servidor desnecessáriamente. Então para contornar este problema, usa-se um ficheiro css apenas para esta pagina (specs.css)
+                        -->
+                        <iframe src="google-glass.html" name="janela" id="frame-spec"></iframe>
+                    </section>
+                </article>
+            </section>
+
+            <footer id="rodape">
+                <p>Copyright &copy; 2020 - by Rafael Alves<p><br>
+                <p><a href="https://facebook.com" target="_blank">Facebook</a> | <a href=https://twitter.com/login?lang=pt" target="_blank">Twitter</a></p>
+            </footer>
+        </div>
+    </body>
+</html>

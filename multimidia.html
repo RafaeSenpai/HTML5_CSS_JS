@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Tudo sobre google glass</title>
+        <link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
+        <!-- Importar apenas a folha de estilo com as formatações para esta pagina, media.css -->
+        <link rel="stylesheet" type="text/css" href="_css/media.css"/>
+        <script language="JavaScript" src="_javascript/funcoes.js"></script>
+    </head>
+
+    <body>
+        <div id="interface">
+            <header id="cabecalho">
+                <hgroup>
+                    <h1>Google Glass</h1>
+                    <h2>A revolução do Google está chegando</h2>
+                </hgroup>
+
+                <img id="icone" src="_imagens/multimidia.png"/>
+                <nav id="menu">
+                    <h1>Menu Principal</h1>
+                    <ul  type="disc">
+                    <li onmouseover="alteraImagemTema('home')" onmouseout="alteraImagemTema('multimidia')"> <a href="index.html"> Home </a></li>
+                        <li onmouseover="alteraImagemTema('especificacoes')" onmouseout="alteraImagemTema('multimidia')"><a href="specs.html"> Especificações </a></li>
+                        <li onmouseover="alteraImagemTema('fotos')" onmouseout="alteraImagemTema('multimidia')"><a href="fotos.html"> Fotos </a></li>
+                        <li onmouseover="alteraImagemTema('multimidia')" onmouseout="alteraImagemTema('multimidia')"><a href="multimidia.html"> Multimídia </a></li>
+                        <li onmouseover="alteraImagemTema('contato')" onmouseout="alteraImagemTema('multimidia')"><a href="fale-conosco.html">Fale conosco </a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="corpo-full">
+                <article id="noticia-principal">
+                    <header id="cabecalho-artigo">
+                        <hgroup>
+                            <h3>Glass > Multimídia</h3>
+                            <h1>Sons e Vídeos</h1>
+                            <h2>por Rafael Alves</h2>
+                            <h3 class="direita">Atualizado em 01/Maio/2020</h3>
+                        </hgroup>
+                    </header>
+
+                    <!-- Para a musica existem 3 formatos compativeis o mp3(firefox) o ogg(firefox) e o aac/m4a (safary),
+                    Cada browser é compativel com determinados formatos de musica, assim sendo tem que se disponibilizar no host as musicas nos 3 formatos,
+                    recorrendo a software (exemplo: http://www.mirovideoconverter.com) que faça a conversão dessas musicas dos respetivos formatos
+
+                    NOTA: A informação neste comentário é analoga também para os ficheiros de video, pois cada browser apenas é compativel com determinados formatos de video-->
+                    <div id="tv-radio">
+                        <!-- a tag controls = "controls" é aconcelhado pela w3s o seu uso desta forma, apesar de haver sites que o fazem de outras maneiras -->
+                        <audio id="musica" controls="controls">
+                            <source src="_media/2009-lovers-carvings-bibio.mp3" type="audio/mpeg"/>
+                            Desculpe, mas nao foi possivel carregar o audio!
+                        </audio>
+                        <!-- a tag poster = "_imagens/video-mini03.jpg" serve para definir uma imagem de previsualização ou apresentação do video, para que desta forma não
+                        seja apresentado, por exemplo, o logotipo do player -->
+                        <video id="filme" controls="controls" poster="_imagens/video-mini03.jpg">
+                            <!-- a tag 'type' é importante para informar o browser do tipo de video que será carregado -->
+                            <source src="_media/getting-started.mp4" type="video/mp4"/>
+                            <!-- Caso o browser nao suporte o ficheiro multimedia o utilizador será informado de tal limitação, mostrando uma mensagem de erro -->
+                            Desculpe, mas nao foi possivel carregar o video!
+                        </video>
+                    </div>
+                </article>
+            </section>
+
+            <footer id="rodape">
+                <p>Copyright &copy; 2020 - by Rafael Alves<p><br>
+                <p><a href="https://facebook.com" target="_blank">Facebook</a> | <a href=https://twitter.com/login?lang=pt" target="_blank">Twitter</a></p>
+            </footer>
+        </div>
+    </body>
+</html>
